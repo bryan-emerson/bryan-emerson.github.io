@@ -8,6 +8,7 @@ let scoreArr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 let halfDeckOne = [];
 let halfDeckTwo = [];
 let currentRound = [];
+let warRound = [];
 
 //  Define a Card class with the following properties:
 
@@ -75,8 +76,8 @@ class Card {
   //console.log(halfDeckTwo);
   let playerOneDeck = new Deck(halfDeckOne);
   let playerTwoDeck = new Deck(halfDeckTwo);
-  console.log(playerOneDeck);
-  console.log(playerTwoDeck);
+  //console.log(playerOneDeck);
+  //console.log(playerTwoDeck);
 
 
   function playRound(deckOne, deckTwo) {
@@ -93,9 +94,39 @@ class Card {
       playerTwoDeck.cards.push(currentRound[0], currentRound[1]);
       currentRound.splice(0, 2);
       console.log("Player Two wins this round!")
+    } else if (currentRound[0].score === currentRound[1].score) {
+      console.log("WAR!");
+      currentRound.push(deckOne.cards[0], deckOne.cards[1], deckOne.cards[2]);
+      deckOne.cards.splice(0, 3);
+      warRound.push(deckOne.cards[0]);
+      deckOne.cards.splice(0, 1);
+      currentRound.push(deckTwo.cards[0], deckTwo.cards[1], deckTwo.cards[2]);
+      deckTwo.cards.splice(0, 3);
+      warRound.push(deckTwo.cards[0]);
+      deckTwo.cards.splice(0, 1);
+      console.log(`${warRound[0].rank} of ${warRound[0].suit} versus ${warRound[1].rank} of ${warRound[1].suit}`);
+      if (warRound[0].score > warRound[1].score) {
+        for (let n = 0; n < currentRound.length; n ++) {
+          playerOneDeck.cards.push(currentRound[n]);
+        }
+        currentRound.splice(0, 8);
+        playerOneDeck.cards.push(warRound[0], warRound[1]);
+        warRound.splice(0, 2);
+        console.log("Player one wins this war!");
+      } else if (warRound[0].score < warRound[1].score) {
+        for (let o = 0; o < currentRound.length; o ++) {
+          playerTwoDeck.cards.push(currentRound[o]);
+        }
+        currentRound.splice(0, 8);
+        playerTwoDeck.cards.push(warRound[0], warRound[1]);
+        warRound.splice(0, 2);
+        console.log("Player one wins this war!");
+      }
     }
   }
 
   playRound(playerOneDeck, playerTwoDeck);
   console.log(`player one now has ${playerOneDeck.cards.length} cards and Player 2 has ${playerTwoDeck.cards.length} cards`);
   console.log(currentRound);
+  console.log(playerOneDeck);
+  console.log(playerTwoDeck);
