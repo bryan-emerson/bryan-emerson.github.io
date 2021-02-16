@@ -42,6 +42,13 @@ class Card {
         this.cards[i] = oldIndex;
       }
     }
+    splitDeck(cards) {
+      for (let l = 0; l < this.cards.length; l ++) {
+        halfDeckOne.push(this.cards[l]);
+        halfDeckTwo.push(this.cards[l + 1]);
+        this.cards.length --;
+      }
+    }
     //make a method which checks count of this.length to mutate the length of array(if you wanna get fancy)
   }
 
@@ -56,13 +63,13 @@ class Card {
 
 
 
-  function splitDeck(wholeDeck) {
-    for (let l = 0; l < wholeDeck.length; l ++) {
-      halfDeckOne.push(wholeDeck.cards[l]);
-      halfDeckTwo.push(wholeDeck.cards[l + 1]);
-      warDeck.length --;
-    }
-  }
+  // function splitDeck(wholeDeck) {
+  //   for (let l = 0; l < wholeDeck.length; l ++) {
+  //     halfDeckOne.push(wholeDeck.cards[l]);
+  //     halfDeckTwo.push(wholeDeck.cards[l + 1]);
+  //     warDeck.length --;
+  //   }
+  // }
 
 
   makeDeck();
@@ -71,6 +78,7 @@ class Card {
   //console.log(warDeck);
   warDeck.shuffle();
   //console.log(warDeck);
-  splitDeck(warDeck);
+  //splitDeck(warDeck);
+  warDeck.splitDeck();
   console.log(halfDeckOne);
   console.log(halfDeckTwo);
