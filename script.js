@@ -2,8 +2,8 @@ console.log("SUP");
 
 let fullDeck = [];
 let suitsArr =[ "Diamonds", "Clubs", "Hearts", "Spades"];
-let rankArr = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
-let scoreArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+let rankArr = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
+let scoreArr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 halfDeckOne = [];
 halfDeckTwo = [];
@@ -28,9 +28,6 @@ class Card {
   //   - cards (an array of cards in the deck)
   //   - split in two: call shuffle method then split deck in two piles
   //   - shuffle: shuffle the cards array
-
-  halfDeckOne = [];
-  halfDeckTwo = [];
 
   class Deck {
     constructor(cards) {
@@ -61,18 +58,19 @@ class Card {
 
   function splitDeck(wholeDeck) {
     for (let l = 0; l < wholeDeck.length; l ++) {
-      halfDeckOne.push(wholeDeck[l]);
-      halfDeckTwo.push(wholeDeck[l + 1]);
-      console.log(halfDeckOne);
-      //console.log(l + 1);
+      halfDeckOne.push(wholeDeck.cards[l]);
+      halfDeckTwo.push(wholeDeck.cards[l + 1]);
+      warDeck.length --;
     }
   }
 
+
   makeDeck();
-  console.log(fullDeck);
+  //console.log(fullDeck);
   let warDeck = new Deck(fullDeck);
   //console.log(warDeck);
   warDeck.shuffle();
-  console.log(warDeck);
+  //console.log(warDeck);
   splitDeck(warDeck);
-  // console.log(halfDeckOne);
+  console.log(halfDeckOne);
+  console.log(halfDeckTwo);
