@@ -7,6 +7,7 @@ let scoreArr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 let halfDeckOne = [];
 let halfDeckTwo = [];
+let currentRound = [];
 
 //  Define a Card class with the following properties:
 
@@ -62,33 +63,31 @@ class Card {
   }
 
 
-
-  // function splitDeck(wholeDeck) {
-  //   for (let l = 0; l < wholeDeck.length; l ++) {
-  //     halfDeckOne.push(wholeDeck.cards[l]);
-  //     halfDeckTwo.push(wholeDeck.cards[l + 1]);
-  //     warDeck.length --;
-  //   }
-  // }
-
-
-  //makeDeck();
+  makeDeck();
   //console.log(fullDeck);
-  //let warDeck = new Deck(fullDeck);
+  let warDeck = new Deck(fullDeck);
   //console.log(warDeck);
-  //warDeck.shuffle();
+  warDeck.shuffle();
   //console.log(warDeck);
   //splitDeck(warDeck);
-  //warDeck.splitDeck();
-  // console.log(halfDeckOne);
-  // console.log(halfDeckTwo);
+  warDeck.splitDeck();
+  //console.log(halfDeckOne);
+  //console.log(halfDeckTwo);
+  let playerOneDeck = new Deck(halfDeckOne);
+  let playerTwoDeck = new Deck(halfDeckTwo);
+  console.log(playerOneDeck);
+  console.log(playerTwoDeck);
 
-  gameOn();
-  function gameOn() {
-    makeDeck();
-    let warDeck = new Deck(fullDeck);
-    warDeck.shuffle();
-    warDeck.splitDeck();
-    console.log(halfDeckOne);
-    console.log(halfDeckTwo);
+
+  function playRound(deckOne, deckTwo) {
+    currentRound.push(deckOne.cards[0]);
+    deckOne.cards.splice(0, 1);
+    currentRound.push(deckTwo.cards[0]);
+    deckTwo.cards.splice(0, 1);
+    console.log(`${currentRound[0].rank} of ${currentRound[0].suit} versus ${currentRound[1].rank} of ${currentRound[1].suit}`);
+
   }
+
+  playRound(playerOneDeck, playerTwoDeck);
+  //console.log(currentRound);
+  console.log(playerOneDeck.cards.length)
