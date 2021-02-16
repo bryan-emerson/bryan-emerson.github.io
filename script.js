@@ -5,8 +5,8 @@ let suitsArr =[ "Diamonds", "Clubs", "Hearts", "Spades"];
 let rankArr = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
 let scoreArr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
-halfDeckOne = [];
-halfDeckTwo = [];
+let halfDeckOne = [];
+let halfDeckTwo = [];
 
 //  Define a Card class with the following properties:
 
@@ -35,7 +35,7 @@ class Card {
       this.cards = cards
     }
     shuffle() {
-      for (let i = this.length - 1; i > 0; i --) {
+      for (let i = this.cards.length - 1; i > 0; i --) {
         const newIndex = Math.floor(Math.random() * (i + 1));
         const oldIndex = this.cards[newIndex];
         this.cards[newIndex] = this.cards[i];
@@ -72,13 +72,23 @@ class Card {
   // }
 
 
-  makeDeck();
+  //makeDeck();
   //console.log(fullDeck);
-  let warDeck = new Deck(fullDeck);
+  //let warDeck = new Deck(fullDeck);
   //console.log(warDeck);
-  warDeck.shuffle();
+  //warDeck.shuffle();
   //console.log(warDeck);
   //splitDeck(warDeck);
-  warDeck.splitDeck();
-  console.log(halfDeckOne);
-  console.log(halfDeckTwo);
+  //warDeck.splitDeck();
+  // console.log(halfDeckOne);
+  // console.log(halfDeckTwo);
+
+  gameOn();
+  function gameOn() {
+    makeDeck();
+    let warDeck = new Deck(fullDeck);
+    warDeck.shuffle();
+    warDeck.splitDeck();
+    console.log(halfDeckOne);
+    console.log(halfDeckTwo);
+  }
