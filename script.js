@@ -85,9 +85,17 @@ class Card {
     currentRound.push(deckTwo.cards[0]);
     deckTwo.cards.splice(0, 1);
     console.log(`${currentRound[0].rank} of ${currentRound[0].suit} versus ${currentRound[1].rank} of ${currentRound[1].suit}`);
-
+    if (currentRound[0].score > currentRound[1].score) {
+      playerOneDeck.cards.push(currentRound[0], currentRound[1]);
+      currentRound.splice(0, 2);
+      console.log("Player One wins this round!")
+    } else if (currentRound[0].score < currentRound[1].score) {
+      playerTwoDeck.cards.push(currentRound[0], currentRound[1]);
+      currentRound.splice(0, 2);
+      console.log("Player Two wins this round!")
+    }
   }
 
   playRound(playerOneDeck, playerTwoDeck);
-  //console.log(currentRound);
-  console.log(playerOneDeck.cards.length)
+  console.log(`player one now has ${playerOneDeck.cards.length} cards and Player 2 has ${playerTwoDeck.cards.length} cards`);
+  console.log(currentRound);
