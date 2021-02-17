@@ -1,4 +1,4 @@
-console.log("SUP");
+console.log("¡Bienvenidos al JUEGO DE GUERRA!");
 
 let fullDeck = [];
 let suitsArr =[ "Diamonds", "Clubs", "Hearts", "Spades"];
@@ -120,13 +120,24 @@ class Card {
         currentRound.splice(0, 8);
         playerTwoDeck.cards.push(warRound[0], warRound[1]);
         warRound.splice(0, 2);
-        console.log("Player one wins this war!");
+        console.log("Player two wins this war!");
       }
     }
+    playerOneDeck.length = playerOneDeck.cards.length;
+    playerTwoDeck.length = playerTwoDeck.cards.length;
+    console.log(`player one now has ${playerOneDeck.length} cards and Player 2 has ${playerTwoDeck.length} cards`);
+
+    if (playerOneDeck.length === 0) {
+      console.log("Player 2 wins!");
+    } else if (playerTwoDeck.length === 0) {
+      console.log("Player 1 wins!");
+    }
+    //console.log(playerOneDeck);
+    //console.log(playerTwoDeck);
   }
 
   playRound(playerOneDeck, playerTwoDeck);
-  console.log(`player one now has ${playerOneDeck.cards.length} cards and Player 2 has ${playerTwoDeck.cards.length} cards`);
-  console.log(currentRound);
-  console.log(playerOneDeck);
-  console.log(playerTwoDeck);
+  // console.log(`player one now has ${playerOneDeck.cards.length} cards and Player 2 has ${playerTwoDeck.cards.length} cards`);
+  // console.log(currentRound);
+  //console.log(playerOneDeck);
+  //console.log(playerTwoDeck);
