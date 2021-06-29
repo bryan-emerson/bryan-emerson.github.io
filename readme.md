@@ -14,8 +14,7 @@
 
 `playRound(playerOneDeck, playerTwoDeck);`
 
-into the console and hit enter.
-the next hand will cycle through and present you the same information for each hand being played (cards played, winner, number of cards left for each player.). After entering the command the first time, you can simply press up to recall the last command put into the console, and hit enter to play your next hand.
+into the console and hit enter. The next hand will cycle through and present you the same information for each hand being played (cards played, winner, number of cards left for each player.). After entering the command the first time, you can simply press up to recall the last command put into the console, and hit enter to play your next hand.
 6. when a player has no more cards their opponent wins!
 
 ## Prerequisites
